@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Truthfully Thinking | The Bloggers</title>
+<style>
+  :root{
+    --ink:#151515;
+    --muted:#666;
+    --paper:#f7f5f0;
+    --card:#ffffff;
+    --line:#ddd8cf;
+    --accent:#27364b;
+    --accent2:#d9b36c;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:Georgia, "Times New Roman", serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.7;
+  }
+  header{
+    background:var(--accent);
+    color:white;
+    padding:24px 7%;
+    position:sticky;
+    top:0;
+    z-index:10;
+  }
+  nav{display:flex;justify-content:space-between;align-items:center;gap:24px}
+  .brand{font-family:Arial, sans-serif;font-weight:800;letter-spacing:.5px}
+  nav a{color:white;text-decoration:none;margin-left:22px;font-family:Arial,sans-serif;font-size:.95rem}
+  nav a:hover{color:var(--accent2)}
+  .hero{
+    padding:90px 7%;
+    background:linear-gradient(135deg,#ece8df,#fff);
+  }
+  .hero h1{
+    font-family:Arial,sans-serif;
+    font-size:clamp(3rem,7vw,6.2rem);
+    line-height:.95;
+    margin:0 0 22px;
+    max-width:900px;
+    letter-spacing:-4px;
+  }
+  .hero p{font-size:1.2rem;max-width:720px;color:#444}
+  .tag{
+    display:inline-block;
+    font-family:Arial,sans-serif;
+    font-size:.78rem;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-weight:700;
+    margin-bottom:16px;
+    color:#70552c;
+  }
+  main{max-width:1100px;margin:auto;padding:70px 7%}
+  section{margin-bottom:85px}
+  h2{
+    font-family:Arial,sans-serif;
+    font-size:2.4rem;
+    line-height:1.1;
+    margin:0 0 28px;
+  }
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+  article,.about{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:30px;
+    box-shadow:0 8px 24px rgba(0,0,0,.04);
+  }
+  article h3{font-family:Arial,sans-serif;font-size:1.45rem;line-height:1.2;margin:8px 0 14px}
+  article p{color:#383838}
+  .byline{font-family:Arial,sans-serif;font-size:.85rem;color:var(--muted);margin-bottom:18px}
+  .post{
+    margin-top:70px;
+    padding-top:50px;
+    border-top:1px solid var(--line);
+  }
+  .post h3{font-size:2rem}
+  .post p{max-width:820px}
+  blockquote{
+    margin:28px 0;
+    padding:18px 24px;
+    border-left:4px solid var(--accent2);
+    background:#f4f1ea;
+    font-style:italic;
+  }
+  .references{
+    margin-top:25px;
+    font-family:Arial,sans-serif;
+    font-size:.88rem;
+    color:#555;
+  }
+  .references p{padding-left:28px;text-indent:-28px}
+  footer{
+    background:#151515;
+    color:#eee;
+    padding:45px 7%;
+    text-align:center;
+    font-family:Arial,sans-serif;
+    font-size:.9rem;
+  }
+  @media(max-width:760px){
+    .grid{grid-template-columns:1fr}
+    nav{align-items:flex-start;flex-direction:column}
+    nav a{margin:0 14px 0 0}
+    .hero h1{letter-spacing:-2px}
+  }
+
+  .visual{
+    margin:36px 0 48px;
+    background:#fff;
+    border:1px solid var(--line);
+    overflow:hidden;
+    box-shadow:0 14px 35px rgba(0,0,0,.06);
+  }
+  .visual svg{display:block;width:100%;height:auto}
+  .visual-caption{
+    padding:14px 20px;
+    font-family:Arial,sans-serif;
+    font-size:.8rem;
+    color:var(--muted);
+    letter-spacing:.3px;
+  }
+  .idea-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+    margin:30px 0 0;
+  }
+  .idea-card{
+    background:#f4f1ea;
+    border:1px solid var(--line);
+    padding:20px 16px;
+    text-align:center;
+  }
+  .idea-card svg{width:54px;height:54px;margin-bottom:10px}
+  .idea-card strong{
+    display:block;
+    font-family:Arial,sans-serif;
+    font-size:.9rem;
+  }
+  .idea-card span{font-size:.8rem;color:var(--muted)}
+  .author-card{
+    margin-top:28px;
+    display:flex;
+    gap:18px;
+    align-items:center;
+    background:#f4f1ea;
+    border:1px solid var(--line);
+    padding:18px 22px;
+  }
+  .author-mark{
+    width:58px;height:58px;border-radius:50%;
+    background:var(--accent);color:white;
+    display:grid;place-items:center;
+    font-family:Arial,sans-serif;font-weight:800;
+    font-size:1.05rem;
+    flex:none;
+  }
+  @media(max-width:760px){
+    .idea-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:430px){
+    .idea-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="brand">TRUTHFULLY THINKING</div>
+    <div>
+      <a href="#home">Home</a>
+      <a href="#posts">Posts</a>
+      <a href="#about">About Us</a>
+    </div>
+  </nav>
+</header>
+
+<div id="home" class="hero">
+  <span class="tag">Final Output · The Bloggers</span>
+  <h1>Truthfully Thinking</h1>
+  <p>
+    A student blog about truth, opinion, evidence, and the choices we make
+    when deciding what to believe.
+  </p>
+  <p><strong>By Chelsea Thea E. Salvacion &amp; Samantha Anne Y. Pomida</strong><br>
+  Grade 12 - Hestia</p>
+
+  <div class="visual" aria-label="Illustration of a person thinking about truth and evidence">
+    <svg viewBox="0 0 1200 360" xmlns="http://www.w3.org/2000/svg" role="img">
+      <rect width="1200" height="360" fill="#27364b"/>
+      <circle cx="930" cy="90" r="150" fill="#3c4d65"/>
+      <circle cx="1020" cy="210" r="95" fill="#d9b36c" opacity=".9"/>
+      <path d="M130 270 C190 205 250 205 310 270" fill="none" stroke="#f7f5f0" stroke-width="18" stroke-linecap="round"/>
+      <circle cx="220" cy="160" r="62" fill="#f7f5f0"/>
+      <path d="M175 155 Q220 115 265 155" fill="none" stroke="#27364b" stroke-width="10" stroke-linecap="round"/>
+      <circle cx="200" cy="175" r="7" fill="#27364b"/><circle cx="240" cy="175" r="7" fill="#27364b"/>
+      <path d="M204 205 Q220 215 236 205" fill="none" stroke="#27364b" stroke-width="7" stroke-linecap="round"/>
+      <path d="M310 120 H475 Q490 120 490 135 V220 Q490 235 475 235 H350 L320 260 V235 H310 Q295 235 295 220 V135 Q295 120 310 120Z" fill="#fff"/>
+      <text x="322" y="164" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#27364b">EVIDENCE?</text>
+      <text x="322" y="198" font-family="Arial, sans-serif" font-size="17" fill="#555">Think • Check • Reflect</text>
+      <path d="M720 250 L770 120 L820 250 Z" fill="#f7f5f0"/>
+      <circle cx="770" cy="105" r="34" fill="#d9b36c"/>
+      <path d="M770 75 V35 M740 105 H700 M800 105 H840 M748 83 L720 55 M792 83 L820 55" stroke="#d9b36c" stroke-width="8" stroke-linecap="round"/>
+      <text x="870" y="290" font-family="Georgia, serif" font-size="32" fill="#fff">Truthfully Thinking</text>
+    </svg>
+    <div class="visual-caption">A visual theme for the blog: curiosity, evidence, reflection, and the search for truth.</div>
+  </div>
+</div>
+
+<main>
+  <section id="posts">
+    <span class="tag">Four Questions, Four Posts</span>
+    <h2>Thinking carefully in a world full of claims.</h2>
+
+    <div class="grid">
+      <article>
+        <span class="tag">Post 01</span>
+        <h3>How Do We Know Truth?</h3>
+        <p>Truth is not simply whatever sounds convincing. We approach it through evidence, reasoning, experience, and a willingness to correct our mistakes.</p>
+        <a href="#post1">Read post →</a>
+      </article>
+      <article>
+        <span class="tag">Post 02</span>
+        <h3>Truth vs. Opinion</h3>
+        <p>Opinions can be meaningful, but they are not automatically facts. The important difference is whether a claim can be supported and checked.</p>
+        <a href="#post2">Read post →</a>
+      </article>
+      <article>
+        <span class="tag">Post 03</span>
+        <h3>Is Truth Always Superior?</h3>
+        <p>Truth matters because it helps us understand reality, but a good life also requires wisdom, empathy, and humility in how we use what we know.</p>
+        <a href="#post3">Read post →</a>
+      </article>
+      <article>
+        <span class="tag">Post 04</span>
+        <h3>A World Without Truth</h3>
+        <p>If there were no shared standards for truth, communication, science, justice, and trust would become extremely difficult.</p>
+        <a href="#post4">Read post →</a>
+      </article>
+    </div>
+
+    <div class="idea-grid" aria-label="Four habits for truth-seeking">
+      <div class="idea-card">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><circle cx="28" cy="28" r="18" fill="none" stroke="#27364b" stroke-width="5"/><path d="M42 42 L57 57" stroke="#d9b36c" stroke-width="7" stroke-linecap="round"/></svg>
+        <strong>Question</strong><span>Ask what the claim means.</span>
+      </div>
+      <div class="idea-card">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><rect x="12" y="9" width="40" height="46" rx="4" fill="none" stroke="#27364b" stroke-width="5"/><path d="M20 22 H44 M20 32 H44 M20 42 H36" stroke="#d9b36c" stroke-width="5" stroke-linecap="round"/></svg>
+        <strong>Check</strong><span>Look for reliable evidence.</span>
+      </div>
+      <div class="idea-card">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M32 8 L55 20 V33 C55 46 45 55 32 58 C19 55 9 46 9 33 V20 Z" fill="none" stroke="#27364b" stroke-width="5"/><path d="M20 32 L28 40 L45 23" fill="none" stroke="#d9b36c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <strong>Evaluate</strong><span>Compare sources and reasons.</span>
+      </div>
+      <div class="idea-card">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M18 48 C8 38 10 20 23 14 C36 8 51 17 52 31 C53 45 42 54 30 54" fill="none" stroke="#27364b" stroke-width="5"/><path d="M21 37 C27 31 35 28 44 30" fill="none" stroke="#d9b36c" stroke-width="6" stroke-linecap="round"/><path d="M22 20 L31 13" stroke="#d9b36c" stroke-width="5" stroke-linecap="round"/></svg>
+        <strong>Reflect</strong><span>Be willing to revise.</span>
+      </div>
+    </div>
+
+    <article id="post1" class="post">
+      <span class="tag">Blog Post 1</span>
+      <h3>How Do We Know Truth?</h3>
+      <div class="byline">By Chelsea Thea E. Salvacion & Samantha Anne Y. Pomida · Grade 12 - Hestia · Final Output: The Bloggers</div>
+
+      <p>
+        Knowing the truth is one of the most difficult parts of being human because
+        we do not always see reality clearly. We have limited information, personal
+        biases, emotions, and experiences that can affect our judgment. For me,
+        knowing truth begins with asking a simple question: <strong>What evidence
+        supports this claim?</strong>
+      </p>
+
+      <p>
+        Evidence can come from observation, reliable records, repeated testing,
+        logical reasoning, and trustworthy testimony. For example, if someone tells
+        me that it will rain tomorrow, I should not treat the statement as a fact
+        just because the person sounds confident. I can check a reliable weather
+        forecast, observe the conditions, and compare information from dependable
+        sources. The more independently supported evidence a claim has, the more
+        reasonable it is to accept.
+      </p>
+
+      <blockquote>
+        Truth-seeking requires both confidence to make judgments and humility to
+        change them when better evidence appears.
+      </blockquote>
+
+      <p>
+        Philosophical discussions about knowledge also remind us that simply
+        believing something does not guarantee that it is true. Plato's
+        <em>Theaetetus</em> explores the difficult relationship among knowledge,
+        perception, and belief. In everyday life, this distinction is important.
+        A rumor can be believed by hundreds of people and still be false.
+      </p>
+
+      <p>
+        I also think truth requires intellectual honesty. If new evidence proves
+        that I was wrong, admitting the mistake is not a weakness. It is part of
+        learning. A person who refuses to reconsider an idea, even after strong
+        evidence appears, may be protecting a belief instead of seeking truth.
+      </p>
+
+      <p>
+        Therefore, we know truth as responsibly as possible by combining evidence,
+        reason, careful observation, credible sources, and openness to correction.
+        We may not achieve perfect certainty about everything, but we can improve
+        the quality of what we believe by taking truth seriously.
+      </p>
+
+      <div class="references">
+        <strong>References</strong>
+        <p>Plato. (1997). <em>Theaetetus</em> (M. J. Levett, Trans.; M. Burnyeat, Rev.). Hackett Publishing Company. (Original work published ca. 369 BCE)</p>
+      </div>
+    </article>
+
+    <article id="post2" class="post">
+      <span class="tag">Blog Post 2</span>
+      <h3>How Is Truth Different From Opinion?</h3>
+      <div class="byline">By Chelsea Thea E. Salvacion & Samantha Anne Y. Pomida · Grade 12 - Hestia · Final Output: The Bloggers</div>
+
+      <p>
+        Truth and opinion can sound similar because both can be expressed as
+        statements. The important difference is that truth is concerned with
+        whether a claim accurately describes reality, while an opinion expresses
+        a person's judgment, preference, interpretation, or belief.
+      </p>
+
+      <p>
+        Consider the statements, "Water freezes at 0°C under standard atmospheric
+        pressure" and "Chocolate ice cream is the best flavor." The first is a
+        factual claim that can be tested under specified conditions. The second
+        is a personal preference. We can disagree about the second statement
+        without either person being factually wrong.
+      </p>
+
+      <p>
+        However, opinions are not always completely disconnected from evidence.
+        Someone might say, "I think this school policy is effective because
+        attendance improved after it was introduced." The conclusion is still an
+        opinion, but it can be supported or challenged by evidence. This is why
+        good discussion should distinguish between <em>what I feel</em> and
+        <em>what the evidence shows</em>.
+      </p>
+
+      <p>
+        Social media makes this distinction especially important. A post can have
+        thousands of likes and still contain inaccurate information. Popularity
+        tells us what many people think; it does not automatically establish
+        what is true. Likewise, confidence, repetition, or a person's status
+        does not turn an unsupported claim into a fact.
+      </p>
+
+      <p>
+        In my view, respecting opinions does not mean treating every opinion as
+        equally accurate. People deserve respect even when their claims are
+        mistaken. We can listen, ask for reasons, check evidence, and disagree
+        without turning the conversation into a personal attack.
+      </p>
+
+      <p>
+        Truth and opinion can therefore coexist, but they serve different
+        purposes. Opinions help us express values and preferences, while truth
+        gives us a standard for evaluating claims about reality. Learning to tell
+        the difference makes our conversations more thoughtful and responsible.
+      </p>
+
+      <div class="references">
+        <strong>References</strong>
+        <p>Russell, B. (1912). <em>The problems of philosophy</em>. Williams and Norgate.</p>
+      </div>
+    </article>
+
+    <article id="post3" class="post">
+      <span class="tag">Blog Post 3</span>
+      <h3>Is Truth Always Superior to an Opinion?</h3>
+      <div class="byline">By Chelsea Thea E. Salvacion & Samantha Anne Y. Pomida · Grade 12 - Hestia · Final Output: The Bloggers</div>
+
+      <p>
+        At first, it seems obvious that truth should always be superior to
+        opinion. If we are trying to understand reality, a well-supported truth
+        is more dependable than an unsupported belief. Yet the question becomes
+        more interesting when we consider what people mean by "superior."
+      </p>
+
+      <p>
+        When a question has an objective answer, truth should guide us. For
+        example, if a bridge has a serious structural problem, an engineer's
+        evidence-based assessment should matter more than someone's personal
+        opinion that the bridge "looks safe." In situations involving health,
+        safety, science, or important decisions, replacing evidence with
+        preference can have serious consequences.
+      </p>
+
+      <p>
+        But many human questions involve values and personal experiences. People
+        can reasonably disagree about which hobby is most enjoyable, which
+        music is most moving, or which school activity is most meaningful.
+        These judgments do not always have one measurable answer. In such cases,
+        an opinion can be appropriate even though it is not an objective fact.
+      </p>
+
+      <blockquote>
+        The goal is not to eliminate opinions; it is to know when an opinion
+        needs evidence and when it expresses a value or preference.
+      </blockquote>
+
+      <p>
+        Truth can also be communicated poorly. A person may know something true
+        but present it arrogantly or without considering another person's
+        perspective. Good thinking therefore needs more than factual accuracy.
+        It also needs humility, empathy, and judgment. Being correct does not
+        give someone permission to disrespect others.
+      </p>
+
+      <p>
+        I would say truth is superior to opinion when the two are competing as
+        explanations of reality. However, truth does not make every personal
+        preference meaningless. A mature thinker knows the difference between
+        facts that should be checked and values that people may reasonably
+        debate.
+      </p>
+
+      <div class="references">
+        <strong>References</strong>
+        <p>James, W. (1897). The will to believe. <em>The New World, 5</em>, 327–347.</p>
+      </div>
+    </article>
+
+    <article id="post4" class="post">
+      <span class="tag">Blog Post 4</span>
+      <h3>What Would the World Be Like If There Were No Truth, Only Opinion?</h3>
+      <div class="byline">By Chelsea Thea E. Salvacion & Samantha Anne Y. Pomida · Grade 12 - Hestia · Final Output: The Bloggers</div>
+
+      <p>
+        Imagine waking up in a world where there is no truth, only opinion.
+        People could say that a historical event happened or did not happen,
+        that a scientific experiment succeeded or failed, or that a promise was
+        kept or broken—and every statement would be treated as equally valid.
+        At first, this might sound like complete freedom. In practice, it would
+        make everyday life extremely difficult.
+      </p>
+
+      <p>
+        Communication depends on shared reality. If there were no way to
+        distinguish accurate information from false information, it would be
+        difficult to make reliable plans. A student could not depend on a
+        schedule, a community could not confidently respond to an emergency,
+        and researchers could not build new knowledge from previous discoveries.
+      </p>
+
+      <p>
+        Justice would also be affected. Courts and communities need evidence to
+        determine what happened. If every claim were automatically treated as
+        equally true, there would be no meaningful way to investigate conflicting
+        accounts. Decisions could become based only on power, popularity, or
+        emotion.
+      </p>
+
+      <p>
+        Science would face an even bigger problem. Scientific knowledge depends
+        on observation, testing, evidence, criticism, and the possibility that a
+        conclusion can be revised. If an unsupported opinion had exactly the same
+        status as a carefully tested explanation, there would be no reason to
+        conduct experiments or correct mistakes.
+      </p>
+
+      <p>
+        Most importantly, relationships depend on trust. Friends, families,
+        teachers, and communities need some confidence that words can refer to
+        real events. A world with no truth would make trust fragile because we
+        could never know whether another person's claims had any connection to
+        reality.
+      </p>
+
+      <p>
+        This thought experiment shows why truth is not merely an academic idea.
+        Truth helps organize knowledge, communication, justice, science, and
+        relationships. Opinions are valuable because they allow people to
+        express different perspectives, but a functioning society needs shared
+        standards for deciding which claims are supported by reality.
+      </p>
+
+      <div class="references">
+        <strong>References</strong>
+        <p>Russell, B. (1912). <em>The problems of philosophy</em>. Williams and Norgate.</p>
+        <p>Plato. (1997). <em>Theaetetus</em> (M. J. Levett, Trans.; M. Burnyeat, Rev.). Hackett Publishing Company. (Original work published ca. 369 BCE)</p>
+      </div>
+    </article>
+  </section>
+
+  <section id="about">
+    <div class="about">
+      <span class="tag">About Us</span>
+      <h2>Why Truthfully Thinking?</h2>
+      <p>
+        <strong>Truthfully Thinking</strong> is a student-created blog exploring
+        how people decide what to believe. The blog focuses on truth and opinion
+        because these ideas appear in everyday life—from classroom discussions
+        and social media to science, friendships, and important decisions.
+      </p>
+      <p>
+        Our goal is not to pretend that every question has an easy answer.
+        Instead, we want to practice asking better questions, examining evidence,
+        recognizing different perspectives, and changing our minds when good
+        reasons require it.
+      </p>
+      <p>
+        <strong>Blog author:</strong> Chelsea Thea E. Salvacion & Samantha Anne Y. Pomida<br>
+        <strong>Section:</strong> Grade 12 - Hestia<br>
+        <strong>Project:</strong> Final Output: The Bloggers
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Truthfully Thinking · Final Output: The Bloggers</p>
+  <p>Original student work. References are provided where outside ideas are used.</p>
+</footer>
+
+</body>
+</html>
